@@ -1,6 +1,7 @@
 package elements;
 
 import core.AndroidOptions;
+import core.InitialDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,16 +16,23 @@ public class Buttons  {
 
 //    static AndroidDriver driver;
 //    DesiredCapabilities cap = new DesiredCapabilities();
+    private AndroidDriver driver = InitialDriver.getDriver();
+
+    public WebElement searchAndClickButtonById(By id) {
+        WebElement searchButton = new WebDriverWait(driver, 10000)
+                .until(ExpectedConditions.elementToBeClickable(id));
+        searchButton.click();
+        return searchButton;
+    }
 
 
-//    public WebElement searchButton(String id) throws MalformedURLException {
-//        AndroidDriver driver= new AndroidOptions().initialDriver();
-//
-//
-//        WebElement searchButton = new WebDriverWait(driver, 10000)
-//                .until(ExpectedConditions.elementToBeClickable((By.id(
-//                        id))));
-//        searchButton.click();
-//        return searchButton;
-//    }
+    public WebElement searchAndClickButtonByXPath(By xpath) {
+        WebElement searchButton = new WebDriverWait(driver, 10000)
+                .until(ExpectedConditions.elementToBeClickable(xpath));
+        searchButton.click();
+        return searchButton;
+    }
+
+
+
 }
